@@ -1,0 +1,14 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_12_reif
+
+SELECT DISTINCT ?component WHERE {
+  ?e_n nellmeta:provenancePartOf ?s.
+  ?v_n nellmeta:provenancePartOf ?o.
+  ?e_n nellonto:politicianusholdsoffice ?v_n.
+  ?e_n nellmeta:provenanceExtent ?i.
+  ?v_n nellmeta:provenanceExtent ?i.
+
+  ?i nellmeta:generatedBy [nellmeta:associatedWith ?component]. 
+}

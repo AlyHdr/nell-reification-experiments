@@ -1,0 +1,14 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+
+#query_6_ng
+
+SELECT ?state ?label (COUNT(?neigh) as ?borders){
+    GRAPH ?i { ?state nellonto:stateorprovinceisborderedbystateorprovince ?neigh.}.
+    ?state rdfs:label ?label.
+    ?i nellmeta:generatedBy ?comp.
+    ?comp nellmeta:iteration ?it.
+    FILTER(?it < 800)
+}
+GROUP BY ?state ?label

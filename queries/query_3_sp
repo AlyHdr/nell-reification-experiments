@@ -1,0 +1,19 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/sp/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_3_sp
+
+select ?person ?birth_date where {
+	
+  ?person ?sing_type_person nellonto:person.
+  ?sing_type_person rdf:singletonPropertyOf rdf:type.
+  
+  ?person ?sing_birth_date ?birth_date.
+  ?sing_birth_date rdf:singletonPropertyOf nellonto:personbirthdate.
+  
+  FILTER NOT EXISTS {
+        ?person ?sing_death_date ?death_date. 
+        ?sing_death_date rdf:singletonPropertyOf nellonto:persondeathdate. 
+    }
+}
+

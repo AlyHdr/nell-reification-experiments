@@ -1,0 +1,17 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_13_n_ary
+
+SELECT ?s ?p ?o (COUNT(DISTINCT ?compexec) AS ?nb) WHERE {
+    ?p nellmeta:subjectProperty ?r1.
+    ?p nellmeta:objectProperty ?v1.
+    ?s ?r1 ?i.
+    ?i ?v1 ?o.
+    
+    ?i nellmeta:generatedBy ?compexec.    
+}
+GROUP BY ?compexec ?s ?p ?o
+ORDER BY DESC(?nb)
+LIMIT 10
+

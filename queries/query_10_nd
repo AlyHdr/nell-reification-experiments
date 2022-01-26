@@ -1,0 +1,16 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+#query_10_reif
+
+SELECT (AVG(?prob) AS ?avg_confidence) ?component WHERE {
+  ?e_n nellmeta:provenancePartOf ?country.
+  ?v_n nellmeta:provenancePartOf nellonto:country.
+  ?e_n rdf:type ?v_n.
+  ?e_n nellmeta:provenanceExtent ?i.
+  ?v_n nellmeta:provenanceExtent ?i.  
+  ?i nellmeta:generatedBy ?cexec.
+  ?cexec nellmeta:probability ?prob.  
+  ?cexec nellmeta:associatedWith ?component. 
+}
+GROUP BY ?component

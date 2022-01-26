@@ -1,0 +1,19 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+#query_1_reif
+
+SELECT ?politician ?wife ?label_polt ?label_wife {
+    ?e_1 nellmeta:provenancePartOf ?politician.
+    ?v_1 nellmeta:provenancePartOf nellonto:politicianus.
+    ?e_1 rdf:type ?v_1.
+    
+    ?e_2 nellmeta:provenancePartOf ?politician.
+    ?v_2 nellmeta:provenancePartOf ?wife.
+    ?e_2  nellonto:hasspouse ?v_2.
+        
+    OPTIONAL {
+        ?politician rdfs:label ?label_polt.# filter (lang(?label_polt) = "en").
+        ?wife rdfs:label ?label_wife.# filter (lang(?label_wife) = "en").
+    }
+}
+

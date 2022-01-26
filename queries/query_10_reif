@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_10_reif
+
+SELECT (AVG(?prob) AS ?avg_confidence) ?component WHERE {
+  ?i rdf:subject ?country; rdf:predicate rdf:type; rdf:object nellonto:country.
+  ?i nellmeta:generatedBy ?cexec.
+  ?cexec <https://w3id.org/nellrdf/reif/metadata/probability> ?prob.  
+  ?cexec nellmeta:associatedWith ?component. 
+}
+GROUP BY ?component

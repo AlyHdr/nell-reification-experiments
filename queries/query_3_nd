@@ -1,0 +1,19 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+#query_1_reif
+
+SELECT ?politician ?person ?bdate {
+    ?e_1 nellmeta:provenancePartOf ?person.
+    ?v_1 nellmeta:provenancePartOf nellonto:person.
+    ?e_1 rdf:type ?v_1.
+    
+    ?e_2 nellmeta:provenancePartOf ?person.
+    ?e_2 nellonto:personbirthdate ?bdate.
+        
+    FILTER NOT EXISTS {
+	?e_3 nellmeta:provenancePartOf ?person.
+	?e_3 nellonto:persondeathdate ?ddate.	
+    }
+}
+

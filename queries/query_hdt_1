@@ -1,0 +1,1 @@
+select * where { <https://w3id.org/nellrdf/quad/metadata/Execution_CPL_chemical_chemicals_type_chemical_1099> ?p ?o. }

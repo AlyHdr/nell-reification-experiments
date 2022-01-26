@@ -1,0 +1,20 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nary/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_10_n_ary
+
+SELECT (AVG(?prob) AS ?avg_confidence) ?component WHERE {
+    rdf:type nellmeta:subjectProperty ?relation_statement_1.
+    rdf:type nellmeta:objectProperty ?relation_value_1.
+    ?country ?relation_statement_1 ?i.
+    ?i ?relation_value_1 nellonto:person.
+    
+    ?i nellmeta:generatedBy ?cexec.
+    ?cexec nellmeta:probability ?prob.
+    
+
+    ?cexec nellmeta:associatedWith ?component.
+
+
+}
+GROUP BY ?component

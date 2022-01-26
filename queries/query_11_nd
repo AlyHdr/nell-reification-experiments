@@ -1,0 +1,22 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+SELECT ?who ?component ?when WHERE {
+  ?e_1 nellmeta:provenancePartOf ?who.
+  ?v_1 nellmeta:provenancePartOf nellonto:person.
+  ?e_1 rdf:type ?v_1.
+  
+  ?e_2 nellmeta:provenancePartOf ?who.
+  ?v_2 nellmeta:provenancePartOf ?off.
+  
+  ?e_2 nellonto:politicianusholdsoffice ?v_2.
+  
+  ?e_2 nellmeta:provenanceExtent ?i.
+  ?v_2 nellmeta:provenanceExtent ?i.
+ 
+  ?i nellmeta:generatedBy ?cexec.  
+  ?cexec nellmeta:associatedWith ?component.  
+  ?cexec nellmeta:atTime ?when.
+}
+ORDER BY ?when
+  

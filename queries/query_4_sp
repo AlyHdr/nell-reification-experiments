@@ -1,0 +1,24 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_4_sp
+SELECT DISTINCT ?city ?citylabel ?mayorlabel WHERE {
+    ?mayor rdfs:label ?mayorlabel.
+
+    ?city rdfs:label ?citylabel.
+    
+    ?mayor ?sing_type_female nellonto:female.
+    ?sing_type_female rdf:singletonPropertyOf rdf:type.
+
+    {
+        ?mayor ?sing_lead1 ?city.
+        ?sing_lead1 rdf:singletonPropertyOf nellonto:personleadscity.
+    } UNION {
+        ?mayor ?sing_lead2 ?city.
+        ?sing_lead2 rdf:singletonPropertyOf nellonto:personleadsgeopoliticalorganization.
+
+        ?city ?sing_type_city nellonto:city.
+        ?sing_type_city rdf:singletonPropertyOf rdf:type.
+    }
+}
+

@@ -1,0 +1,28 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_4_ng
+
+SELECT DISTINCT ?city ?citylabel ?mayorlabel WHERE {
+    
+        ?mayor rdfs:label ?mayorlabel. 
+    
+        ?city rdfs:label ?citylabel.
+    
+    GRAPH ?g3 {
+        ?mayor rdf:type nellonto:female.
+    }.
+
+    {
+        GRAPH ?g4 {
+            ?mayor nellonto:personleadscity ?city.
+        }.
+    } UNION {
+        GRAPH ?g5 {
+            ?mayor nellonto:personleadsgeopoliticalorganization ?city.
+        }.
+        GRAPH ?g6{
+            ?city rdf:type nellonto:city.
+        }.
+    }
+}

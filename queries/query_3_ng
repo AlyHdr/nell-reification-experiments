@@ -1,0 +1,20 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_3_ng
+
+select ?person ?birth_date where {
+
+    GRAPH ?g1 {
+        ?person rdf:type nellonto:person.
+    }.
+    GRAPH ?g2 {
+        ?person nellonto:personbirthdate ?birth_date.
+    }.
+
+  FILTER NOT EXISTS {
+      GRAPH ?g3 {
+          ?person nellonto:persondeathdate ?death_date.
+      }.
+    }
+}

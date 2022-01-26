@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_12_sp
+
+SELECT DISTINCT ?component WHERE {
+    ?s ?i ?o.
+    ?i rdf:singletonPropertyOf nellonto:politicianusholdsoffice.
+
+    ?i nellmeta:generatedBy [nellmeta:associatedWith ?component].
+}
+

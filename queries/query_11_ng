@@ -1,0 +1,17 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_11_ng
+
+SELECT ?who ?component ?when WHERE {
+    GRAPH ?i2 {
+    	?who rdf:type nellonto:person.
+    }.
+    GRAPH ?i1 {
+        ?who nellonto:politicianusholdsoffice ?off.
+    }.
+    ?i1 nellmeta:generatedBy ?cexec.
+    ?cexec nellmeta:associatedWith ?component.
+    ?cexec nellmeta:atTime ?when.
+}
+ORDER BY ?when

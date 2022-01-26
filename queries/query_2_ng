@@ -1,0 +1,10 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_2_ng
+SELECT ?president ?age ?name {
+    GRAPH ?g0 {?president rdf:type nellonto:person.}
+    GRAPH ?g1 {?president nellonto:politicianusholdsoffice ?off. }.
+    GRAPH ?g2 {?president nellonto:persondiedatage ?age. }.
+}
+

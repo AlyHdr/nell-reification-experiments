@@ -1,0 +1,10 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_12_reif
+
+SELECT DISTINCT ?component WHERE {
+  ?i rdf:subject ?s; rdf:predicate nellonto:politicianholdsoffice ; rdf:object ?o.
+  ?i nellmeta:generatedBy [nellmeta:associatedWith ?component]. 
+}
+limit 100

@@ -1,0 +1,18 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_3_n_ary
+
+select ?person ?birth_date {
+	
+  nellonto:personbirthdate meta:subjectProperty ?rel_statement.
+  nellonto:personbirthdate meta:objectProperty ?rel_value.
+
+  ?person ?rel_statment ?belief.
+  ?belief ?rel_value ?birth_date.
+  
+  FILTER NOT EXISTS {
+        nellonto:persondeathdate meta:subjectProperty ?relation_statement_1.
+        ?person ?relation_statement_1 ?belief.
+    }
+}

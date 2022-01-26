@@ -1,0 +1,19 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+#query_1_reif
+
+SELECT ?politician ?age ?label_polt {
+    ?e_0 nellmeta:provenancePartOf ?politician.
+    ?v_0 nellmeta:provenancePartOf nellonto:person.
+    ?e_0 rdf:type ?v_0.
+
+    ?e_1 nellmeta:provenancePartOf ?politician.
+    ?v_1 nellmeta:provenancePartOf ?off.
+    ?e_1 nellonto:politicianusholdsoffice ?v_1.
+    
+    #?e_2 nellmeta:provenancePartOf ?politician.
+    #?v_2 nellmeta:provenancePartOf ?age.
+    #?e_2 nellonto:persondiedatage ?v_2.
+    
+    ?politician rdfs:label ?label_polt.
+}

@@ -1,0 +1,18 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_11_sp
+
+SELECT ?who ?p ?when WHERE {
+    ?p ?i nellonto:person.
+    ?i rdf:singletonPropertyOf rdf:type.
+    ?p ?i2 ?off.
+    ?i2 rdf:singletonPropertyOf nellonto:politicianusholdsoffice.
+
+    ?i2 nellmeta:generatedBy ?cexec.
+
+    ?cexec nellmeta:atTime ?when.
+
+}
+ORDER BY ?when
+

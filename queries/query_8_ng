@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_8_ng
+SELECT DISTINCT ?person ?label WHERE {
+    GRAPH ?g1 {
+        ?person rdf:type nellonto:person.
+    }.
+    GRAPH ?g2 {
+        ?person ?property <https://w3id.org/nellrdf/quad/resource/country_usa>.
+    }.
+}LIMIT 100

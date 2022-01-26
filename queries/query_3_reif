@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_3_reif
+
+select ?person ?birth_date where {
+  
+  ?i1 rdf:subject ?person ; rdf:predicate rdf:type ; rdf:object nellonto:person .
+  ?i2 rdf:subject ?person ; rdf:predicate nellonto:personbirthdate ; rdf:object ?birth_date .
+
+  FILTER NOT EXISTS { ?i3 rdf:subject ?person ; rdf:predicate nellonto:persondeathdate ; rdf:object ?death_date .}
+}
+

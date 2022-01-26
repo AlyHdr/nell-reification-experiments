@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#query_9_reif
+
+SELECT ?city ?country ?label_country WHERE {
+  ?i rdf:subject ?city; rdf:predicate nellonto:citycapitalofcountry; rdf:object ?country.
+  ?country rdfs:label ?label_country.
+ ?i nellmeta:probabilityOfBelief ?p.  
+}
+ORDER BY DESC(?p)

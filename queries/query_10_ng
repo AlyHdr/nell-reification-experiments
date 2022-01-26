@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_6_ng
+SELECT (AVG(?prob) AS ?avg_confidence) ?component WHERE {
+    GRAPH ?g1 {
+        ?country rdf:type nellonto:country.
+    }.
+    ?g1 nellmeta:generatedBy ?cexec.
+    ?cexec nellmeta:probability ?prob.
+    ?cexec nellmeta:associatedWith ?component.
+}
+GROUP BY ?component

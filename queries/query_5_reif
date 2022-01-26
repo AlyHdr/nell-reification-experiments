@@ -1,0 +1,22 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?country ?label (COUNT(*) as ?count) WHERE {
+  
+	?country rdfs:label ?label.
+
+  [] rdf:subject ?city; rdf:predicate nellonto:citylocatedincountry; rdf:object ?country.
+
+  [] rdf:subject ?mayor; rdf:predicate rdf:type; rdf:object nellonto:female.
+
+  { 
+    [] rdf:subject ?mayor; rdf:predicate nellonto:personleadscity; rdf:object ?city.
+  } UNION {
+    [] rdf:subject ?mayor; rdf:predicate nellonto:personleadsgeopoliticalorganization; rdf:object ?city.
+    [] rdf:subject ?city; rdf:predicate rdf:type; rdf:object nellonto:city.
+  }
+}
+GROUP BY ?country ?label
+ORDER BY ?count
+

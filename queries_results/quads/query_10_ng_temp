@@ -1,0 +1,10 @@
+avg_confidence,component
+0.282555282555282555282555,https://w3id.org/nellrdf/quad/metadata/MBL
+1.0,https://w3id.org/nellrdf/quad/metadata/OntologyModifier
+0.0,https://w3id.org/nellrdf/quad/metadata/SEAL
+0.242857142857142857142857,https://w3id.org/nellrdf/quad/metadata/OE
+0.0,https://w3id.org/nellrdf/quad/metadata/CMC
+0.0,https://w3id.org/nellrdf/quad/metadata/LE
+0.0,https://w3id.org/nellrdf/quad/metadata/Semparse
+0.0,https://w3id.org/nellrdf/quad/metadata/CPL
+1.0,https://w3id.org/nellrdf/quad/metadata/SpreadsheetEdits

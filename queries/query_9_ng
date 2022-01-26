@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_9_ng
+
+SELECT ?city ?country WHERE {
+    GRAPH ?g1 {
+        ?city nellonto:citycapitalofcountry ?country.
+    }.
+    ?g1 nellmeta:probabilityOfBelief ?p.
+}
+ORDER BY DESC(?p)

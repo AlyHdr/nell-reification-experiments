@@ -1,0 +1,17 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?city ?lang ?label ?when WHERE {
+ 
+  ?lang rdfs:label ?label.
+  [] rdf:subject ?city; rdf:predicate rdf:type; rdf:object nellonto:city.
+  ?i rdf:subject ?lang ; rdf:predicate nellonto:languageofcity ; rdf:object ?city.
+  ?i nellmeta:generatedBy ?cexec.  
+  ?cexec nellmeta:probability ?proba.
+  FILTER ( ?proba > 0.5 )
+  ?cexec nellmeta:atTime ?when.
+}
+#ORDER BY ?when
+

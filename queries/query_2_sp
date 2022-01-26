@@ -1,0 +1,18 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_2_sp
+
+SELECT ?p ?age ?name where {
+
+    ?p ?s1 nellonto:person.
+    ?s1 rdf:singletonPropertyOf rdf:type.
+
+    ?p ?s2 ?off.
+    ?s2 rdf:singletonPropertyOf nellonto:politicianusholdsoffice.
+
+    ?p ?s3 ?age.
+    ?s3 rdf:singletonPropertyOf nellonto:persondiedatage.
+    ?p rdfs:label ?name.
+}
+limit 100

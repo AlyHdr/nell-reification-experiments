@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+
+#query_14_ng
+
+select * where {
+#SELECT ?person ?name ?wp WHERE {
+  #GRAPH ?g1 { ?person rdf:type nellonto:person. }.
+   GRAPH ?g2 { ?person nellonto:haswikipediaurl ?wp.}.
+    #?person rdfs:label ?name.
+}
+LIMIT 100

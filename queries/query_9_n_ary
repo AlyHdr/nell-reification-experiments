@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_9_n_ary
+
+SELECT ?city ?country WHERE {
+    nellonto:citycapitalofcountry nellmeta:subjectProperty ?relation_statement_1.
+    nellonto:citycapitalofcountry nellmeta:objectProperty ?relation_value_1.
+    ?city ?relation_statement_1 ?i.
+    ?i ?relation_value_1 ?country.
+    ?i nellmeta:probabilityOfBelief ?p.
+}
+ORDER BY DESC(?p)

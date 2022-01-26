@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_8_sp
+
+SELECT DISTINCT ?person ?property WHERE {
+    ?person ?sing_type_person nellonto:person.
+    ?sing_type_person rdf:singletonPropertyOf rdf:type.
+
+    ?person ?sing_prop <https://w3id.org/nellrdf/sp/resource/country_usa>.
+    ?sing_prop rdf:singletonPropertyOf ?property.
+}
+LIMIT 100

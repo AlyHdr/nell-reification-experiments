@@ -1,0 +1,11 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+
+
+SELECT * WHERE { 
+    [] rdf:subject ?s ; rdf:predicate ?p ; rdf:object ?o.
+    #?s ?p ?o.
+}limit 1000
+

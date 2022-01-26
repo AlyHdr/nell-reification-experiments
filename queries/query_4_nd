@@ -1,0 +1,26 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX  nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+#query_4_reif
+
+SELECT DISTINCT ?city ?citylabel ?mayorlabel WHERE {	    
+   ?mayor rdfs:label ?mayorlabel.
+  ?city rdfs:label ?citylabel .
+  ?e0 nellmeta:provenancePartOf ?mayor.
+  ?v0 nellmeta:provenancePartOf nellonto:female.
+  ?e0 rdf:type ?v0. 
+  {
+	?e1 nellmeta:provenancePartOf ?mayor.
+	?v1 nellmeta:provenancePartOf ?city.
+	?e1 nellonto:personleadscity ?v1.
+    } UNION {
+	?e2 nellmeta:provenancePartOf ?mayor.
+	?v2 nellmeta:provenancePartOf ?city.
+	?e2 nellonto:personleadsgeopoliticalorganization ?v2.
+	
+        ?e3 nellmeta:provenancePartOf ?city.
+        ?v3 nellmeta:provenancePartOf nellonto:city.
+        ?e3 rdf:type ?v3.
+    }
+}
+

@@ -1,0 +1,18 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_14_n_ary
+
+SELECT ?person ?name ?wp WHERE {
+    rdf:type nellmeta:subjectProperty ?r1.
+    rdf:type nellmeta:objectProperty ?v1.
+    ?person ?r1 ?i.
+    ?i ?v1 nellonto:person.
+
+    nellonto:haswikipediaurl nellmeta:subjectProperty ?r2.
+    nellonto:haswikipediaurl nellmeta:objectProperty ?v2.
+    ?person ?r2 ?i1.
+    ?i1 ?v2 ?wp.
+    ?person rdfs:label ?name.
+}
+LIMIT 100

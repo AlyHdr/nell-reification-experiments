@@ -1,0 +1,14 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+#query_7_reif
+
+SELECT DISTINCT ?person ?label WHERE {
+  ?e_1 nellmeta:provenancePartOf ?person.
+  ?v_1 nellmeta:provenancePartOf nellonto:person.
+  ?e_1 rdf:type ?v_1.
+  
+  ?person rdfs:label ?label.
+
+   FILTER(REGEX(?label,"Douglas Adams","i"))
+}

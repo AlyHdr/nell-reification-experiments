@@ -1,0 +1,15 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+#query_8_reif
+SELECT DISTINCT ?person ?property WHERE {
+  ?e_1 nellmeta:provenancePartOf ?person.
+  ?v_1 nellmeta:provenancePartOf nellonto:person.
+  ?e_1 rdf:type ?v_1.
+  
+  ?e_2 nellmeta:provenancePartOf ?person.
+  ?v_2 nellmeta:provenancePartOf <https://w3id.org/nellrdf/nd/resource/country_usa>.
+  ?e_2 ?property ?v_2.
+
+}
+LIMIT 100

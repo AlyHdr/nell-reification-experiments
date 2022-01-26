@@ -1,4 +1,4 @@
-# Internship Reification in Semantic Web 2019 
+# Evaluating Reification Models in Real-World Datasets
 
 In this readme a documentation of the tests is presented with examples on the command line tools and the bash scripts used.
 ## Triple Stores (SPARQL engines)

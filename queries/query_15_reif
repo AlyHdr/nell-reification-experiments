@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_2_reif
+
+SELECT ?country ?currency ?proba where{
+    [] rdf:subject ?country; rdf:predicate rdf:type; rdf:object nellonto:country.
+    ?i rdf:subject ?country; rdf:predicate nellonto:countrycurrency; rdf:object ?currency .
+    ?i nellmeta:generatedBy ?cexec.
+    ?cexec nellmeta:probability ?proba.
+    FILTER ( ?proba > 0.5 )	
+}
+#ORDER BY DESC(?proba)

@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_13_reif
+
+SELECT ?company ?p (COUNT(DISTINCT ?compexec) AS ?nb) WHERE {
+  ?i rdf:subject ?company; rdf:predicate ?p; rdf:object ?o.
+  ?i nellmeta:generatedBy ?compexec.
+}
+GROUP BY ?compexec ?company ?p
+ORDER BY DESC(?nb)
+LIMIT 1000
+

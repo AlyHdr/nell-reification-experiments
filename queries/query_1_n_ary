@@ -1,0 +1,20 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/nary/metadata/>
+
+SELECT ?politician ?wife ?label_polt ?label_wife {
+
+    rdf:type meta:subjectProperty ?relation_statement_1.
+    rdf:type meta:objectProperty ?relation_value_1.
+    ?politician ?relation_statement_1 ?belief.
+    ?belief ?relation_value_1 nellonto:politicianus.
+
+    nellonto:hasspouse meta:subjectProperty ?relation_statement_2.
+    nellonto:hasspouse meta:objectProperty ?relation_value_2.
+    ?politician ?relation_statement_2 ?belief2.
+    ?belief2 ?relation_value_2 ?wife.
+
+     OPTIONAL {
+        ?politician rdfs:label ?label_polt. filter (lang(?label_polt) = "en").
+        ?wife rdfs:label ?label_wife. filter (lang(?label_wife) = "en").
+    }
+}

@@ -1,0 +1,16 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/sp/metadata/>
+
+SELECT ?politician ?wife ?label_polt ?label_wife {
+
+    ?politician ?sing_type_politician nellonto:politicianus.
+    ?sing_type_politician rdf:singletonPropertyOf rdf:type.
+
+    ?politician ?sing_has_wife ?wife.
+    ?sing_has_wife rdf:singletonPropertyOf nellonto:hasspouse.
+
+     OPTIONAL {
+        ?politician rdfs:label ?label_polt. filter (lang(?label_polt) = "en").
+        ?wife rdfs:label ?label_wife. filter (lang(?label_wife) = "en").
+    }
+}

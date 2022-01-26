@@ -1,0 +1,11 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_12_ng
+
+SELECT DISTINCT ?component WHERE {
+    GRAPH ?g1{
+        ?s nellonto:politicianusholdsoffice ?o.
+    }.
+    ?g1 nellmeta:generatedBy [nellmeta:associatedWith ?component].
+}

@@ -1,0 +1,15 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+#query_14_reif 
+
+SELECT ?person ?name ?wp WHERE {
+	?e1 nellmeta:provencanePartOf ?person.
+	?v1 nellmeta:provencanePartOf nellonto:person.
+	?e1 rdf:type ?v1.
+	?e2 nellmeta:provencanePartOf ?person.
+  	?v2 nellmeta:provencanePartOf ?wp.
+	?e2 nellonto:haswikipediaurl ?v2.
+	#?person rdfs:label ?name.
+}
+LIMIT 100

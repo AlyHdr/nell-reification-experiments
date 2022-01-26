@@ -1,0 +1,18 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+
+#query_6_reif
+SELECT ?state ?label ?borders WHERE {
+ { SELECT ?state (COUNT(?neigh) as ?borders)
+  WHERE {
+    ?i rdf:subject ?state ; rdf:predicate nellonto:stateorprovinceisborderedbystateorprovince ; rdf:object ?neigh.
+   
+  }GROUP BY ?state
+}
+  ?state rdfs:label ?label.
+  ?i nellmeta:generatedBy ?comp.  
+  ?comp nellmeta:iteration ?it.
+  FILTER(?it < 800)
+}
+ORDER BY DESC(?borders)
+

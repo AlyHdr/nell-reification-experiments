@@ -1,0 +1,16 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_7_n_ary
+
+SELECT DISTINCT ?person ?label WHERE {
+    rdf:type nellmeta:subjectProperty ?relation_statement_1.
+    rdf:type nellmeta:objectProperty ?relation_value_1.
+    ?person ?relation_statement_1 ?belief1.
+    ?belief1 ?relation_value_1 nellonto:person.
+
+    ?person rdfs:label ?label.
+
+    FILTER(REGEX(?label,"Douglas Adams","i"))
+}
+

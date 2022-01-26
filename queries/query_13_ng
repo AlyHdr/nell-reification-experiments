@@ -1,0 +1,15 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_13_ng
+
+
+SELECT ?s ?p ?o (COUNT(DISTINCT ?compexec) AS ?nb) WHERE {
+    GRAPH ?i{
+        ?s ?p ?o.
+    }.
+    ?i nellmeta:generatedBy ?compexec.
+}
+GROUP BY ?s ?p ?o
+ORDER BY DESC(?nb)
+LIMIT 10

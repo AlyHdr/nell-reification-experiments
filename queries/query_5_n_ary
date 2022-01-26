@@ -1,0 +1,44 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_5_n_ary
+
+SELECT DISTINCT ?country ?label (COUNT(*) as ?count) WHERE {
+   
+    ?country rdfs:label ?label. 
+    
+    #relation 2
+    nellonto:citylocatedincountry meta:subjectProperty ?relation_statement_2.
+    nellonto:citylocatedincountry meta:objectProperty ?relation_value_2.
+
+    ?city ?relation_statement_2 ?belief2.
+    ?belief2 ?relation_value_2 ?country.
+    
+    #relation 3
+    rdf:type meta:subjectProperty ?relation_statement_3.
+    rdf:type meta:objectProperty ?relation_value_3.
+
+    ?mayor ?relation_statement_3 ?belief3.
+    ?belief3 ?relation_value_3 nellonto:female.
+
+    {
+        nellonto:personleadscity meta:subjectProperty ?relation_statement_4.
+        nellonto:personleadscity meta:objectProperty ?relation_value_4.
+        ?mayor ?relation_statement_4 ?belief4.
+        ?belief4 ?relation_value_4 ?city.
+
+    } UNION {
+
+        nellonto:personleadsgeopoliticalorganization meta:subjectProperty ?relation_statement_5.
+        nellonto:personleadsgeopoliticalorganization meta:objectProperty ?relation_value_5.
+        ?mayor ?relation_statement_5 ?belief5.
+        ?belief5 ?relation_value_5 ?city.
+
+        rdf:type meta:subjectProperty ?relation_statement_6.
+        rdf:type meta:objectProperty ?relation_value_6.
+        ?city ?relation_statement_6 ?belief6.
+        ?belief3 ?relation_value_6 nellonto:city.
+    }
+}
+GROUP BY ?country ?label
+ORDER BY ?count

@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_12_n_ary 
+
+SELECT DISTINCT ?component WHERE {
+    nellonto:politicianusholdsoffice nellmeta:subjectProperty ?r.
+    nellonto:politicianusholdsoffice nellmeta:objectProperty ?v.
+    ?s ?r ?i.
+    ?i ?v ?o.
+    
+    ?i nellmeta:generatedBy [nellmeta:associatedWith ?component].
+}

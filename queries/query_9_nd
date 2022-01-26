@@ -1,0 +1,18 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+#query_9_reif
+
+SELECT ?city ?country WHERE {
+  
+  ?e_n nellmeta:provenancePartOf ?city.
+  ?v_n nellmeta:provenancePartOf ?country.
+  
+  ?e_n nellonto:citycapitalofcountry ?v_n.
+  
+  ?e_n nellmeta:provenanceExtent ?i.
+  ?v_n nellmeta:provenanceExtent ?i.
+  
+  ?i nellmeta:probabilityOfBelief ?p.  
+}
+ORDER BY DESC(?p)

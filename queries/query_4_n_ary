@@ -1,0 +1,37 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_4_n_ary
+
+SELECT DISTINCT ?city ?citylabel ?mayorlabel WHERE {
+    
+     ?mayor rdfs:label ?mayorlabel.
+    ?city rdfs:label ?citylabel.
+    
+    
+    #relation 3
+    rdf:type meta:subjectProperty ?relation_statement_3.
+    rdf:type meta:objectProperty ?relation_value_3.
+
+    ?mayor ?relation_statement_3 ?belief3.
+    ?belief3 ?relation_value_3 nellonto:female.
+
+    {
+        nellonto:personleadscity meta:subjectProperty ?relation_statement_4.
+        nellonto:personleadscity meta:objectProperty ?relation_value_4.
+        ?mayor ?relation_statement_4 ?belief4.
+        ?belief4 ?relation_value_4 ?city.
+
+    } UNION {
+
+        nellonto:personleadsgeopoliticalorganization meta:subjectProperty ?relation_statement_5.
+        nellonto:personleadsgeopoliticalorganization meta:objectProperty ?relation_value_5.
+        ?mayor ?relation_statement_5 ?belief5.
+        ?belief5 ?relation_value_5 ?city.
+
+        rdf:type meta:subjectProperty ?relation_statement_6.
+        rdf:type meta:objectProperty ?relation_value_6.
+        ?city ?relation_statement_6 ?belief6.
+        ?belief3 ?relation_value_6 nellonto:city.
+    }
+}

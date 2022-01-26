@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_9_sp
+
+SELECT ?city ?country ?p WHERE {
+    ?city ?sing_capital ?country.
+    ?sing_capital rdf:singletonPropertyOf nellonto:citycapitalofcountry.
+    
+    ?sing_capital nellmeta:probabilityOfBelief ?p.
+}
+ORDER BY DESC(?p)

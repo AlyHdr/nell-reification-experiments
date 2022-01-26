@@ -1,0 +1,34 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_5_ng
+
+SELECT DISTINCT ?country ?label (COUNT(*) as ?count) WHERE {
+    
+    ?country rdfs:label ?label. 
+    
+    GRAPH ?g2 {
+        ?city nellonto:citylocatedincountry ?country.
+    }.
+    
+    GRAPH ?g3 {
+        ?mayor rdf:type nellonto:female.
+    }.
+
+    {
+        GRAPH ?g4 {
+            ?mayor nellonto:personleadscity ?city.
+        }.
+    } UNION {
+        GRAPH ?g5 {
+            ?mayor nellonto:personleadsgeopoliticalorganization ?city.
+        }.
+        GRAPH ?g6{
+            ?city rdf:type nellonto:city.
+        }.
+    }
+}
+
+GROUP BY ?country ?label
+ORDER BY ?count
+

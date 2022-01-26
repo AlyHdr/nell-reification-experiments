@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/quad/metadata/>
+
+SELECT ?politician ?wife ?label_polt ?label_wife {
+
+    GRAPH ?g1 {?politician rdf:type nellonto:politicianus.}.
+    GRAPH ?g2 {?politician nellonto:hasspouse ?wife.}.
+    
+    OPTIONAL {
+        ?politician rdfs:label ?label_polt.
+        ?wife rdfs:label ?label_wife.
+    }
+}

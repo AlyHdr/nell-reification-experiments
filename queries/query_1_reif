@@ -1,0 +1,13 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_1_reif
+
+SELECT ?politician ?wife ?label_polt ?label_wife {
+    [] rdf:subject ?politician ; rdf:predicate rdf:type ; rdf:object nellonto:politicianus.
+    [] rdf:subject ?politician ; rdf:predicate nellonto:hasspouse ; rdf:object ?wife.
+   #OPTIONAL {
+        #?politician rdfs:label ?label_polt. filter (lang(?label_polt) = "en").
+        #?wife rdfs:label ?label_wife. filter (lang(?label_wife) = "en").
+    #}
+}
+

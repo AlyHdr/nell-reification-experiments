@@ -1,0 +1,16 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?s ?p ?o (COUNT(DISTINCT ?compexec) AS ?nb) WHERE {
+ 
+  ?e_n nellmeta:provenancePartOf ?s.
+  ?v_n nellmeta:provenancePartOf ?o.
+  ?e_n nellmeta:provenanceExtent ?i.
+  ?v_n nellmeta:provenanceExtent ?i.
+  ?i nellmeta:generatedBy ?compexec.
+}
+GROUP BY ?compexec ?s ?p ?o
+ORDER BY DESC(?nb)
+LIMIT 10
+

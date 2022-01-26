@@ -1,0 +1,17 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nary/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_8_n_ary
+
+SELECT DISTINCT ?person ?property WHERE {
+    rdf:type nellmeta:subjectProperty ?relation_statement_1.
+    rdf:type nellmeta:objectProperty ?relation_value_1.
+    ?person ?relation_statement_1 ?belief1.
+    ?belief1 ?relation_value_1 nellonto:person.
+
+    ?property nellmeta:subjectProperty ?relation_statement_2.
+    ?property nellmeta:objectProperty ?relation_value_2.
+    ?person ?relation_statement_2 ?belief2.
+    ?belief2 ?relation_value_2 <https://w3id.org/nellrdf/nary/resource/country_usa> .
+}
+LIMIT 100

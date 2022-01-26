@@ -1,0 +1,27 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nary/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/nary/metadata/>
+
+#query_2_n_ary
+
+
+SELECT ?president ?age ?name {
+
+    rdf:type meta:subjectProperty ?relation_statement_0.
+    rdf:type meta:objectProperty ?relation_value_0.
+    ?politician ?relation_statement_0 ?belief0.
+    ?belief1 ?relation_value_0 nellonto:person.
+
+    nellonto:politicianusholdsoffice meta:subjectProperty ?relation_statement_1.
+    nellonto:politicianusholdsoffice meta:objectProperty ?relation_value_1.
+    ?politician ?relation_statement_1 ?belief1.
+    ?belief1 ?relation_value_1 ?off.
+    
+
+    nellonto:persondiedatage meta:subjectProperty ?relation_statement_2.
+    nellonto:persondiedatage meta:objectProperty ?relation_value_2.
+    ?politician ?relation_statement_2 ?belief2.
+    ?belief2 ?relation_value_2 ?age.
+
+    ?president rdfs:label ?name.
+}
+

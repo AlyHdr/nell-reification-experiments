@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/quad/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/quad/metadata/>
+
+#query_7_ng
+
+SELECT DISTINCT ?person ?label WHERE {
+    GRAPH ?g1 {
+        ?person rdf:type nellonto:person.
+    }.
+    ?person rdfs:label ?label.
+    FILTER(REGEX(?label,"Douglas Adams","i"))
+}

@@ -1,0 +1,19 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX meta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#query_4_reif
+
+SELECT DISTINCT ?city ?citylabel ?mayorlabel WHERE {
+	?mayor rdfs:label ?mayorlabel.
+	?city rdfs:label ?citylabel.    
+    [] rdf:subject ?mayor ; rdf:predicate rdf:type ; rdf:object nellonto:female.
+
+    {
+        [] rdf:subject ?mayor; rdf:predicate nellonto:personleadscity ; rdf:object ?city.
+    } UNION {
+        [] rdf:subject ?mayor; rdf:predicate nellonto:personleadsgeopoliticalorganization; rdf:object ?city.
+        [] rdf:subject ?city; rdf:predicate rdf:type ; rdf:object nellonto:city.
+    }
+}
+

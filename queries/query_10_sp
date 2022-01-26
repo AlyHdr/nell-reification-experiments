@@ -1,0 +1,18 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_10_sp
+
+SELECT (AVG(?prob) AS ?avg_confidence) ?component WHERE {
+    
+    ?country ?i nellonto:country.
+    ?i rdf:singletonPropertyOf rdf:type.
+
+    ?i nellmeta:generatedBy ?cexec.
+
+    ?cexec nellmeta:probability ?prob.
+
+    ?cexec nellmeta:associatedWith ?component.
+
+}
+GROUP BY ?component

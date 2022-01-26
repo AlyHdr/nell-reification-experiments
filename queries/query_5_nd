@@ -1,0 +1,33 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/nd/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/nd/metadata/>
+
+#query_4_reif
+
+SELECT DISTINCT ?country ?label (COUNT(*) as ?count) WHERE {	    
+   ?country rdfs:label ?label.
+   ?e1 nellmeta:provenancePartOf ?city.
+   ?v1 nellmeta:provenancePartOf ?country.
+   ?e1 nellonto:citylocatedincountry ?v1.
+   
+   ?e2 nellmeta:provenancePartOf ?mayor.
+   ?v2 nellmeta:provenancePartOf nellonto:female.
+   ?e2 rdf:type ?v2.
+  
+   {
+	?e3 nellmeta:provenancePartOf ?mayor.
+	?v3 nellmeta:provenancePartOf ?city.
+	?e3 nellonto:personleadscity ?v3.
+ 
+   } UNION {
+	
+	?e4 nellmeta:provenancePartOf ?mayor.
+	?v4 nellmeta:provenancePartOf ?city.
+	?e4 nellonto:personleadsgeopoliticalorganization ?v4.
+	
+	?e5 nellmeta:provenancePartOf ?city.
+        ?v5 nellmeta:provenancePartOf nellonto:city.
+        ?e5 rdf:type ?v5.
+    }
+}
+GROUP BY ?country ?label
+ORDER BY ?count

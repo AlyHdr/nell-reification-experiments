@@ -1,0 +1,15 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_13_sp
+
+SELECT ?s ?p ?o (COUNT(DISTINCT ?compexec) AS ?nb) WHERE {
+  ?s ?i ?p.
+  ?i rdf:singletonPropertyOf ?o.
+
+  ?i nellmeta:generatedBy ?compexec.
+}
+GROUP BY ?compexec ?s ?p ?o
+ORDER BY DESC(?nb)
+LIMIT 10
+

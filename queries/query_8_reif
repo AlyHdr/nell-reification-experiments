@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#query_8_reif
+SELECT DISTINCT ?person ?prop WHERE {
+    [] rdf:subject ?person; rdf:predicate rdf:type; rdf:object nellonto:person.
+    [] rdf:subject ?person; rdf:predicate ?prop; rdf:object <https://w3id.org/nellrdf/reif/resource/country_usa>.
+    #[] rdf:subject ?team; rdf:predicate rdf:type; rdf:object nellonto:sportsteam.
+    #[] rdf:subject ?team; rdf:predicate nellonto:trophywonbyteam ; rdf:object ?tr.
+}
+LIMIT 100

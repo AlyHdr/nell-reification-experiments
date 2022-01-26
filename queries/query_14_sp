@@ -1,0 +1,15 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_14_sp
+
+SELECT ?person ?name ?wp WHERE {
+    ?person ?i1 nellonto:person.
+    ?i1 rdf:singletonPropertyOf rdf:type.
+
+    ?person ?i2 ?wp.
+    ?i2 rdf:singletonPropertyOf nellonto:haswikipediaurl.
+
+    ?person rdfs:label ?name.
+}
+LIMIT 100

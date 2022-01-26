@@ -1,0 +1,17 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_2_reif
+
+select ?p ?age ?name where {
+  
+  [] rdf:subject ?p ; rdf:predicate rdf:type ; rdf:object nellonto:person .
+  [] rdf:subject ?p ; rdf:predicate nellonto:politicianusholdsoffice ; rdf:object ?off .
+  [] rdf:subject ?p ; rdf:predicate nellonto:persondiedatage ; rdf:object ?age.
+  ?p rdfs:label ?name.
+  #?i nellmeta:generatedBy ?cexec.
+  #?cexec nellmeta:probability ?proba.
+  #FILTER ( ?proba > 0.5 )
+}
+limit 100
+

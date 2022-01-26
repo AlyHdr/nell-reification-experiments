@@ -1,0 +1,22 @@
+Running Query...
+president,age,name
+https://w3id.org/nellrdf/quad/resource/male_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/male_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/male_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/male_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/male_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford001,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford001,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford001,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford001,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford001,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/person_gerald_ford,93,
+https://w3id.org/nellrdf/quad/resource/male_isaac,Ishmael,
+https://w3id.org/nellrdf/quad/resource/male_isaac,Ishmael,
+https://w3id.org/nellrdf/quad/resource/person_isaac,Ishmael,
+https://w3id.org/nellrdf/quad/resource/person_isaac,Ishmael,
+run time: 23

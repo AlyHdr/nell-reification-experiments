@@ -1,0 +1,12 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+#query_14_reif 
+
+SELECT ?person ?name ?wp WHERE {
+    [] rdf:subject ?person ; rdf:predicate rdf:type; rdf:object nellonto:person.
+    [] rdf:subject ?person; rdf:predicate nellonto:haswikipediaurl; rdf:object ?wp.
+    ?person rdfs:label ?name.
+}
+LIMIT 100

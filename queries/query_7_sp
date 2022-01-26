@@ -1,0 +1,15 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/sp/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/sp/metadata/>
+
+#query_7_sp
+
+SELECT DISTINCT ?person ?label WHERE {
+    
+    ?person ?sing_type_person nellonto:person.
+    ?sing_type_person rdf:singletonPropertyOf rdf:type.
+
+    ?person rdfs:label ?label.
+    FILTER(REGEX(?label,"Douglas Adams","i"))
+}
+#limit 100
+

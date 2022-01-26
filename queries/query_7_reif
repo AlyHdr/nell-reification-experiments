@@ -1,0 +1,11 @@
+PREFIX nellonto: <https://w3id.org/nellrdf/reif/ontology/>
+PREFIX nellmeta: <https://w3id.org/nellrdf/reif/metadata/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#query_7_reif
+
+SELECT DISTINCT ?person ?label WHERE {
+    [] rdf:subject ?person; rdf:predicate rdf:type; rdf:object nellonto:person.
+    ?perosn rdfs:label ?label.
+    FILTER(REGEX(?label,"Douglas Adams","i"))
+}
